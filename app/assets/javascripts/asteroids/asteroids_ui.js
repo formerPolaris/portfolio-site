@@ -564,7 +564,7 @@
       var score = game.score;
       var level = game.level;
       score += game.lives * 1000;
-      score *= level;
+      score *= 1 + level/100;
       var scoreObject;
       var callback = function() {
         scoreObject = {
