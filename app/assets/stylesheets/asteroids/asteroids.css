@@ -8,6 +8,7 @@
   }
 
 #asteroids-game {
+  outline: 0;
   font-family: "hyperspaceregular",  Monaco, monospace;
   color: white;
   background: black;
