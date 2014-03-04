@@ -9,8 +9,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-ui-rails'
-gem 'friendly_id'
 gem 'protected_attributes'
+gem 'friendly_id'
+gem 'certified'
 
 group :development do
   gem 'better_errors'

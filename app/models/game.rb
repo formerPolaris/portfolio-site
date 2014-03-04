@@ -11,6 +11,8 @@
 
 class Game < ActiveRecord::Base
   extend FriendlyId
+
+  attr_accessible :name, :slug
   friendly_id :name, :use => [:slugged, :history]
 
   has_many :scores

@@ -1,11 +1,11 @@
 //= require ./asteroids/starfield
 //= require ./asteroids/moving_object
+//= require ./asteroids/inherits
 //= require ./asteroids/asteroid
 //= require ./asteroids/bullet
 //= require ./asteroids/ship
 //= require ./asteroids/saucer
 //= require ./asteroids/particle
-//= require ./asteroids/inherits
 //= require ./asteroids/game
 //= require ./asteroids/asteroids_ui
 //= require ./asteroids/preload

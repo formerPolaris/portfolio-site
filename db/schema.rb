@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20140217223937) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "games", force: true do |t|
-    t.string   "name"
-    t.string   "slug"
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 20140217223937) do
   add_index "games", ["slug"], name: "index_games_on_slug", using: :btree
 
   create_table "scores", force: true do |t|
-    t.integer  "game_id"
-    t.string   "player"
-    t.integer  "value"
+    t.integer  "game_id",    null: false
+    t.string   "player",     null: false
+    t.integer  "value",      null: false
     t.integer  "level"
     t.string   "difficulty"
     t.string   "special"

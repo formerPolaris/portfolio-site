@@ -68,7 +68,7 @@
         this.asteroids.length >= 1 &&
         this.player !== null) {
         var odds = Math.random() * 60;
-        var extra = this.level / 50 + (this.elapsed - 300)/600;
+        var extra = (this.level / 25 + (this.elapsed - 300)/600) * 6;
         odds += extra > 30 ? 30 : extra;
         if (Math.floor(odds) >= 59)
           this.spawnSaucer();
@@ -92,7 +92,7 @@
       if(this.pointsToNextLife <= 0 && this.lives > 0) {
         createjs.Sound.play("life");
         this.lives++;
-        this.pointsToNextLife = 10000 + this.pointsToNextLife
+        this.pointsToNextLife = 10000 + this.pointsToNextLife;
       }
     },
 
