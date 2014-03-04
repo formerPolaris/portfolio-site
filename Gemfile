@@ -12,7 +12,7 @@ gem 'jquery-ui-rails'
 gem 'protected_attributes'
 gem 'friendly_id'
 gem 'certified'
-gem 'rails_serve_static_assets' 
+gem 'rails_serve_static_assets'
 
 group :development do
   gem 'better_errors'

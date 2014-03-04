@@ -49,8 +49,7 @@ $(document).ready(function() {
     AsteroidsUI.initializeLoadingView();
 
     if (!createjs.Sound.registerPlugins([createjs.WebAudioPlugin, 
-      createjs.HTMLAudioPlugin, 
-      createjs.FlashPlugin])) {
+      createjs.HTMLAudioPlugin])) {
       return;
     }
     var manifest = [
