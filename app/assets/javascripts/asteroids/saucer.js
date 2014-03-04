@@ -151,9 +151,6 @@
           var newDistance = Math.sqrt(Math.pow(newX, 2) + Math.pow(newY, 2));
 
           if(newDistance <= i * bullet_speed) {
-            console.log("Seeking!");
-            console.log("Player is at: " + x2 + ", " + y2);
-            console.log("Firing at: " + newX + ", " + newY);
             var newAngle = Math.atan2(newY, newX);
             bullet_direction = [
               newX,
