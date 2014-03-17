@@ -1,4 +1,71 @@
-#polaris_animation .polaris-main {
+div#polaris-animation {
+  border:2px solid lightgrey;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#polaris-animation .polaris-main {
+  width:100%;
+  opacity: 0;
   color: blue;
-  font-size: 48pt;
+  font-size: 96pt;
+  position: absolute;
+}
+
+#polaris-animation .polaris-reflection {
+  width:100%;
+  opacity: 0;
+  color: blue;
+  font-size: 96pt;
+  position: absolute;
+  -webkit-transform: scaleY(-.5);
+     -moz-transform: scaleY(-.5);
+       -o-transform: scaleY(-.5);
+          transform: scaleY(-.5);
+             filter: FlipV;
+}
+
+#polaris-animation .slogan {
+  opacity: 0;
+  color: white;
+  font-size: 24pt;
+  position: absolute;
+}
+
+#polaris-animation .anim-container-main {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+}
+
+#polaris-animation .anim-container-reflection {
+  text-align: center;
+  margin: auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+#polaris-animation .anim-container-slogan {
+  margin: auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+#home-projects {
+  opacity: 0;
+  margin-top: 10px;
+  border: 1px solid blue;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+#home-projects .project-container {
+  border: 2px solid lightgrey;
+  opacity: 0;
+  float: left;
 }
