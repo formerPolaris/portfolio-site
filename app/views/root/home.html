@@ -16,12 +16,19 @@
   </div>
 </div>
 
+<div id="home-menu">
+  <a href="http://polaris.us/">Home</a> | About | Resumé | <a href="https://github.com/Polaris">GitHub</a>
+</div>
+
 <div id="home-projects">
   <div class="project-container asteroids-project">
+    Asteroids
   </div>
   <div class="project-container pillar-project">
+    Pillar
   </div>
   <div class="project-container ruby-facets">
+    Worked Coding Problems
   </div>
 </div>
 
@@ -72,6 +79,11 @@
     });
 
     var originalContainerHeight = $("#polaris-animation").height();
+    var originalMenuHeight = $("#home-menu").height();
+
+    $("#home-menu").css({
+      height: 0
+    });
 
     $(window).resize(function() {
       $("#polaris-animation").css({
@@ -105,11 +117,18 @@
           opacity: 1
         });
         $("#home-projects").animate({
-          height: $(window).height() - originalContainerHeight
+          height: $(window).height() - originalContainerHeight - originalMenuHeight
         }, animateTime, function() {
           $(".project-container").animate({
             opacity: 1
           }, animateTime);
+          $("#home-menu").animate({
+            height: originalMenuHeight
+          }, animateTime/4, function () {
+            $("#home-menu").animate({
+              opacity: 1
+            }, animateTime);
+          });
         });
         $(window).off("resize");
         $(window).resize(function() {
@@ -117,7 +136,7 @@
             width: $(window).width()
           });
           $("#home-projects").css({
-            height: $(window).height() - originalContainerHeight
+            height: $(window).height() - originalContainerHeight - originalMenuHeight
           });
         });
         $(window).resize();
@@ -126,3 +145,5 @@
 
   });
 </script>
+
+<% session[:seen_intro] = true %>

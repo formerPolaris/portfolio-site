@@ -53,6 +53,16 @@ div#polaris-animation {
   display: block;
   position: relative;
   overflow: hidden;
+  text-align: center;
+}
+
+#home-menu {
+  padding-top: 3px;
+  text-align: center;
+  font-size: 16pt;
+  color: white;
+  opacity: 0;
+  overflow: hidden;
 }
 
 #home-projects {
@@ -62,10 +72,25 @@ div#polaris-animation {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
+  overflow: hidden;
 }
 
 #home-projects .project-container {
+  text-align: center;
+  color: white;
   border: 2px solid lightgrey;
   opacity: 0;
   float: left;
+  width: 250px;
+  height: 200px;
+  margin: 20px;
+}
+
+#home-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+#home-menu a:hover {
+  text-decoration: underline;
 }
