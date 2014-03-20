@@ -17,7 +17,7 @@
 </div>
 
 <div id="home-menu">
-  <a href="http://polaris.us/">Home</a> | About | Resumé | <a href="https://github.com/Polaris">GitHub</a>
+  <a href="http://polaris.us/">Home</a> | <a href="http://polaris.us/about">About</a> | <a href="https://s3-us-west-1.amazonaws.com/polaris-common/swenson_dev_resume_march_2014.pdf">Resumé</a> | <a href="https://github.com/Polaris">GitHub</a>
 </div>
 
 <div id="home-projects">
@@ -38,19 +38,6 @@
     var animateTime = <%= session[:seen_intro] ? 0 : 2000 %>
     var standardPCWidth = 250;
     var standardPCHeight = 200;
-
-    $.fn.textWidth = function(){
-      var self = $(this),
-          children = self.children(),
-          calculator = $('<span style="display: inline-block;" />'),
-          width;
-
-      children.wrap(calculator);
-      width = children.parent().width(); // parent = the calculator wrapper
-      children.unwrap();
-      return width;
-    };
-
     $("body").css({
       "background-color": "black"
     });
