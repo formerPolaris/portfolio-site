@@ -1,41 +1,5 @@
-<div id="polaris-animation">
-  <div class="anim-container-main">
-    <div class="polaris-main">
-      Polaris
-    </div>
-  </div>
-  <div class="anim-container-reflection">
-    <div class="polaris-reflection">
-      Polaris
-    </div>
-  </div>
-  <div class="anim-container-slogan">
-    <div class="slogan">
-      Adventures in Ruby, Rails, and JavaScript
-    </div>
-  </div>
-</div>
-
-<div id="home-menu">
-  <a href="http://polaris.us/">Home</a> | <a href="http://polaris.us/about">About</a> | <a href="https://s3-us-west-1.amazonaws.com/polaris-common/swenson_dev_resume_march_2014.pdf">Resumé</a> | <a href="https://github.com/Polaris">GitHub</a>
-</div>
-
-<div id="home-projects">
-  <div class="project-container asteroids-project">
-    Asteroids
-  </div>
-  <div class="project-container pillar-project">
-    Pillar
-  </div>
-  <div class="project-container ruby-facets">
-    Worked Coding Problems
-  </div>
-</div>
-
-<script>
-  $(document).ready(function() {
-
-    var animateTime = <%= session[:seen_intro] ? 0 : 2000 %>
+$(document).ready(function() {
+  if(window.isStaticPage) {
     var standardPCWidth = 250;
     var standardPCHeight = 200;
     $("body").css({
@@ -117,6 +81,14 @@
             }, animateTime);
           });
         });
+        if($("#home-projects").length <= 0){
+          $("#home-menu").css({
+            height: originalMenuHeight,
+            opacity: 1
+          });
+        } else {
+          document.cookie="seen_intro= true"
+        }
         $(window).off("resize");
         $(window).resize(function() {
           $("#polaris-animation").css({
@@ -129,8 +101,5 @@
         $(window).resize();
       });
     });
-
-  });
-</script>
-
-<% session[:seen_intro] = true %>
+  }
+});

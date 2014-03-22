@@ -1641,8 +1641,9 @@ body .ui-tooltip {
 }
 
 #asteroids-game .high-score-level {
-  width: 10%;
+  width: 16%;
   left: 78.5%;
+  text-align: right;
 }
 
 /* High Scores Entry */
@@ -1711,6 +1712,103 @@ body .ui-tooltip {
   background-color: white;
   height: .2%;
   width: .2%;
+}
+div#polaris-animation {
+  border:2px solid white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#polaris-animation .polaris-main {
+  width:100%;
+  opacity: 0;
+  color: blue;
+  font-size: 96pt;
+  position: absolute;
+}
+
+#polaris-animation .polaris-reflection {
+  width:100%;
+  opacity: 0;
+  color: blue;
+  font-size: 96pt;
+  position: absolute;
+  -webkit-transform: scaleY(-.5);
+     -moz-transform: scaleY(-.5);
+       -o-transform: scaleY(-.5);
+          transform: scaleY(-.5);
+             filter: FlipV;
+}
+
+#polaris-animation .slogan {
+  opacity: 0;
+  color: white;
+  font-size: 24pt;
+  position: absolute;
+}
+
+#polaris-animation .anim-container-main {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: auto;
+}
+
+#polaris-animation .anim-container-reflection {
+  text-align: center;
+  margin: auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+#polaris-animation .anim-container-slogan {
+  margin: auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+#home-menu {
+  padding-top: 3px;
+  text-align: center;
+  font-size: 16pt;
+  color: white;
+  opacity: 0;
+  overflow: hidden;
+}
+
+#home-projects {
+  opacity: 0;
+  margin-top: 10px;
+  border: 1px solid blue;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  overflow: hidden;
+}
+
+#home-projects .project-container {
+  text-align: center;
+  color: white;
+  border: 2px solid white;
+  opacity: 0;
+  float: left;
+  width: 250px;
+  height: 200px;
+  margin: 20px;
+  overflow: hidden;
+}
+
+#home-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+#home-menu a:hover {
+  text-decoration: underline;
 }
 .pillar-game {
   overflow: hidden;
@@ -2143,4 +2241,8 @@ body .ui-tooltip {
   width: 41.5%;
   bottom: 17%;
   left: 29.5%;
+}
+#about-polaris {
+  color: white;
+  font-size: 18pt;
 }
