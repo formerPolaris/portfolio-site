@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var ready = function() {
   console.log("I'm running!")
   if(window.isStaticPage) {
     var standardPCWidth = 250;
@@ -103,4 +103,6 @@ $(document).ready(function() {
       });
     });
   }
-});
+};
+
+$(document).on("page:change", ready);

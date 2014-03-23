@@ -27323,6 +27323,114 @@ Y),!0;Ga=ab=!0;Q=!1;F();t.remove(g,"focus",Y);return!0};M=function(b){if(p)retur
 for(b in e)e.hasOwnProperty(b)&&(c[b]===k?c[b]=e[b]:c[b]!==e[b]&&(c.setupOptions[b]=c[b]))};ma=function(){if(p)return!1;if(c.html5Only)return p||(t.remove(g,"load",c.beginDelayedInit),c.enabled=!0,M()),!0;Z();try{l._externalInterfaceTest(!1),Oa(!0,c.flashPollingInterval||(c.useHighPerformance?10:50)),c.debugMode||l._disableDebug(),c.enabled=!0,c.html5Only||t.add(g,"unload",la)}catch(b){return H({type:"JS_TO_FLASH_EXCEPTION",fatal:!0}),xa(!0),M(),!1}M();t.remove(g,"load",c.beginDelayedInit);return!0};
 G=function(){if(N)return!1;N=!0;Ma();wa();!v&&c.hasHTML5&&c.setup({useHTML5Audio:!0,preferFlash:!1});Wa();!v&&u&&(Ua.push(sa.needFlash),c.setup({flashLoadTimeout:1}));n.removeEventListener&&n.removeEventListener("DOMContentLoaded",G,!1);Z();return!0};Ba=function(){"complete"===n.readyState&&(G(),n.detachEvent("onreadystatechange",Ba));return!0};ua=function(){na=!0;t.remove(g,"load",ua)};ta=function(){if(Fa&&(c.setupOptions.useHTML5Audio=!0,c.setupOptions.preferFlash=!1,ha||Za&&!s.match(/android\s2\.3/i)))ha&&
 (c.ignoreFlash=!0),A=!0};ta();Da();t.add(g,"focus",Y);t.add(g,"load",F);t.add(g,"load",ua);n.addEventListener?n.addEventListener("DOMContentLoaded",G,!1):n.attachEvent?n.attachEvent("onreadystatechange",Ba):H({type:"NO_DOM2_EVENTS",fatal:!0})}var ka=null;if(void 0===g.SM2_DEFER||!SM2_DEFER)ka=new U;g.SoundManager=U;g.soundManager=ka})(window);
+var ready = function() {
+  console.log("I'm running!")
+  if(window.isStaticPage) {
+    var standardPCWidth = 250;
+    var standardPCHeight = 200;
+    $("body").css({
+      "background-color": "black"
+    });
+
+    $("#polaris-animation").css({
+      width: $(window).width()
+    });
+
+    $(".anim-container-main").css({
+      height: $(".polaris-main").height()*.6
+    });
+    $(".anim-container-reflection").css({
+      height: $(".polaris-reflection").height()*.6/2
+    });
+    $(".anim-container-slogan").css({
+      height: $(".slogan").height(),
+      width: $(".slogan").width()*1.01
+    });
+    $(".polaris-main").css({
+      bottom: -$(".polaris-main").height(),
+      opacity: 1
+    });
+    $(".polaris-reflection").css({
+      top: -$(".polaris-reflection").height()*.7,
+      opacity: .5
+    });
+
+    var originalContainerHeight = $("#polaris-animation").height();
+    var originalMenuHeight = $("#home-menu").height();
+
+    $("#home-menu").css({
+      height: 0
+    });
+
+    $(window).resize(function() {
+      $("#polaris-animation").css({
+        height: $(window).height(),
+        width: $(window).width()
+      });
+    });
+    $(window).resize();
+
+    $(".slogan").css({
+      left: -$(".slogan").width(),
+      opacity: 1
+    });
+    $(".polaris-reflection").css({
+      top: -$(".polaris-reflection").height()*.7,
+      opacity: .5
+    });
+    $(".polaris-main").animate({
+      bottom: "-35%"
+    }, animateTime);
+    $(".polaris-reflection").animate({
+      top: "-120%"
+    }, animateTime, function() {
+      $(".slogan").animate({
+        left: 0
+      }, animateTime/4, function() {
+        $("#polaris-animation").animate({
+          height: originalContainerHeight
+        }, animateTime);
+        $("#home-projects").css({
+          opacity: 1
+        });
+        $("#home-projects").animate({
+          height: $(window).height() - originalContainerHeight - originalMenuHeight
+        }, animateTime, function() {
+          $(".project-container").animate({
+            opacity: 1
+          }, animateTime);
+          $("#home-menu").animate({
+            height: originalMenuHeight
+          }, animateTime/4, function () {
+            $("#home-menu").animate({
+              opacity: 1
+            }, animateTime);
+          });
+        });
+        if($("#home-projects").length <= 0){
+          $("#home-menu").css({
+            height: originalMenuHeight,
+            opacity: 1
+          });
+        } else {
+          document.cookie="seen_intro= true"
+        }
+        $(window).off("resize");
+        $(window).resize(function() {
+          $("#polaris-animation").css({
+            width: $(window).width()
+          });
+          $("#home-projects").css({
+            height: $(window).height() - originalContainerHeight - originalMenuHeight
+          });
+        });
+        $(window).resize();
+      });
+    });
+  }
+};
+
+$(document).on("page:change", ready);
 (function(root) {
   var Starfield = root.Starfield = (root.Starfield || {});
   Starfield.size = 500;
@@ -28243,6 +28351,7 @@ Function.prototype.inherits = function(parent) {
 
     step: function() {
       this.elapsed += 1;
+      this.totalElapsed += 1;
       if(this.player !== null) {
         this.player.decelerate(.01);
         this.playerInput();
@@ -28299,6 +28408,7 @@ Function.prototype.inherits = function(parent) {
     },
 
     start: function() {
+      this.totalElapsed = (this.totalElapsed === undefined ? 0 : this.totalElapsed);
       this.elapsed = 0;
       this.invincibleTimer = 0;
       this.pointsToNextLife = (this.pointsToNextLife === undefined ? 10000 : this.pointsToNextLife)
@@ -29117,6 +29227,18 @@ Function.prototype.inherits = function(parent) {
       var game = AsteroidsUI.game;
       var score = game.score;
       var level = game.level;
+      var elapsed = game.totalElapsed;
+      var lives = game.lives;
+
+      if(score % 10 !== 0 ||
+        (lives > 0 && level !== 50) ||
+        level * 300 > elapsed ||
+        level > 50 ||
+        lives > elapsed) {
+        alert("Nope ;)");
+        AsteroidsUI.initializeMainMenu();
+        Starfield.start(AsteroidsUI.$gameContainer);
+      }
       score += game.lives * 1000;
       score *= 1 + level/100;
       var scoreObject;
