@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  console.log("I'm running!")
   if(window.isStaticPage) {
     var standardPCWidth = 250;
     var standardPCHeight = 200;
