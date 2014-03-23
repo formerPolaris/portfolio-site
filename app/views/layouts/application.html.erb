@@ -10,7 +10,7 @@
 <body>
 
 <%= javascript_tag do %>
-  window.animateTime = <%= !cookies["seen_intro"].nil? || @main_page.nil? ? 0 : 2000 %>
+  window.animateTime = <%= !cookies["seen_intro"].nil? || !current_page?(controller:'root', action:'index') ? 0 : 2000 %>
 <% end %>
 
 <%= yield %>
