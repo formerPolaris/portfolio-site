@@ -1,7 +1,6 @@
 var ready = function() {
-  if(!window.asteroidsPreloaded && window.game == "asteroids") {
+  if(window.game == "asteroids") {
     console.log("Loading asteroids...");
-    window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");

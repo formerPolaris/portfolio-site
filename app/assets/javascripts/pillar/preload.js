@@ -1,7 +1,6 @@
 var ready = function() {
-  if(!window.pillarPreloaded && window.game == "pillar") {
+  if(window.game == "pillar") {
     console.log("Loading pillar...");
-    window.pillarPreloaded = true;
     PillarUI.$gameContainer = $(".pillar-game");
     if(PillarUI.$gameContainer.attr("class") !== undefined) {
       PillarUI.initializeLoadingView();
