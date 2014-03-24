@@ -1,7 +1,5 @@
 var ready = function() {
   if(window.game == "asteroids") {
-    window.AsteroidsUI = null;
-    window.Asteroids = null;
     console.log("Loading asteroids...");
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
