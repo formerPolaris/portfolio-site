@@ -29352,9 +29352,10 @@ Function.prototype.inherits = function(parent) {
   };
 })(this);
 var ready = function() {
-  if(!window.asteroidsPreloaded && window.currentPage == "asteroids") {
+  if(window.game == "asteroids") {
+    window.AsteroidsUI = null;
+    window.Asteroids = null;
     console.log("Loading asteroids...");
-    window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");
@@ -30652,9 +30653,10 @@ $(document).on("page:change", ready);
   }
 })(this);
 var ready = function() {
-  if(!window.pillarPreloaded && window.currentPage == "pillar") {
+  if(window.game == "pillar") {
+    window.PillarUI = null;
+    window.Pillar = null;
     console.log("Loading pillar...");
-    window.pillarPreloaded = true;
     PillarUI.$gameContainer = $(".pillar-game");
     if(PillarUI.$gameContainer.attr("class") !== undefined) {
       PillarUI.initializeLoadingView();
