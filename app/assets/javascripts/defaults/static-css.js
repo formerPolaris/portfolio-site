@@ -1,5 +1,6 @@
 var ready = function() {
   if(window.isStaticPage) {
+    console.log("Loading static js-to-css...")
     var standardPCWidth = 250;
     var standardPCHeight = 200;
     $("body").css({

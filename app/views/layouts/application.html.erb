@@ -12,6 +12,7 @@
 <%= javascript_tag do %>
   window.animateTime = <%= !cookies["seen_intro"].nil? || !current_page?(controller:'root', action:'index') ? 0 : 2000 %>;
   window.isStaticPage = <%= controller.controller_name == "root" || controller.controller_name == "static_pages" %>;
+  window.isGame = <%= controller.controller_name == "game" %>;
 <% end %>
 
 <%= yield %>

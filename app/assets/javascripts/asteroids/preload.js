@@ -1,5 +1,6 @@
 var ready = function() {
   if(!window.asteroidsPreloaded) {
+    console.log("Loading asteroids...");
     window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
