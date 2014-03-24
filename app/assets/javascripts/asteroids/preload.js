@@ -1,5 +1,5 @@
 var ready = function() {
-  if(!window.asteroidsPreloaded && window.currentPage == "games-asteroids") {
+  if(!window.asteroidsPreloaded && window.game == "asteroids") {
     console.log("Loading asteroids...");
     window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
