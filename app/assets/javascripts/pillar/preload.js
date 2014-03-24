@@ -1,5 +1,6 @@
-if(!window.pillarPreloaded) {
-  var ready = function() {
+var ready = function() {
+  if(!window.pillarPreloaded) {
+    window.pillarPreloaded = true;
     PillarUI.$gameContainer = $(".pillar-game");
     if(PillarUI.$gameContainer.attr("class") !== undefined) {
       PillarUI.initializeLoadingView();
@@ -180,10 +181,7 @@ if(!window.pillarPreloaded) {
       }
       tryLoad();
     }
-  };
+  }
+};
 
-  $(document).on("page:change", function(){
-    window.pillarPreloaded = true;
-    ready;
-  });
-}
+$(document).on("page:change", ready);

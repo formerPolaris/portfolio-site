@@ -1,5 +1,6 @@
-if(!window.asteroidsPreloaded) {
-  var ready = function() {
+var ready = function() {
+  if(!window.asteroidsPreloaded) {
+    window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");
@@ -101,7 +102,8 @@ if(!window.asteroidsPreloaded) {
       }
       tryLoad();
     }
-  };
+  }
+};
 
   $(document).on("page:change", function(){
     window.asteroidsPreloaded = true;
