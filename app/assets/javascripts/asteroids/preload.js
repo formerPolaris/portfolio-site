@@ -105,8 +105,4 @@ var ready = function() {
   }
 };
 
-  $(document).on("page:change", function(){
-    window.asteroidsPreloaded = true;
-    ready;
-  });
-}
+$(document).on("page:change", ready);
