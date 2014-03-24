@@ -27325,6 +27325,7 @@ G=function(){if(N)return!1;N=!0;Ma();wa();!v&&c.hasHTML5&&c.setup({useHTML5Audio
 (c.ignoreFlash=!0),A=!0};ta();Da();t.add(g,"focus",Y);t.add(g,"load",F);t.add(g,"load",ua);n.addEventListener?n.addEventListener("DOMContentLoaded",G,!1):n.attachEvent?n.attachEvent("onreadystatechange",Ba):H({type:"NO_DOM2_EVENTS",fatal:!0})}var ka=null;if(void 0===g.SM2_DEFER||!SM2_DEFER)ka=new U;g.SoundManager=U;g.soundManager=ka})(window);
 var ready = function() {
   if(window.isStaticPage) {
+    console.log("Loading static js-to-css...")
     var standardPCWidth = 250;
     var standardPCHeight = 200;
     $("body").css({
@@ -29350,8 +29351,10 @@ Function.prototype.inherits = function(parent) {
     AsteroidsUI.game.restart();
   };
 })(this);
-if(!window.asteroidsPreloaded) {
-  var ready = function() {
+var ready = function() {
+  if(!window.asteroidsPreloaded && window.currentPage == "asteroids") {
+    console.log("Loading asteroids...");
+    window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");
@@ -29453,14 +29456,10 @@ if(!window.asteroidsPreloaded) {
       }
       tryLoad();
     }
-  };
+  }
+};
 
-  $(document).on("page:change", function(){
-    window.asteroidsPreloaded = true;
-    ready;
-  });
-}
-;
+$(document).on("page:change", ready);
 
 
 
@@ -30652,8 +30651,10 @@ if(!window.asteroidsPreloaded) {
     PillarUI.initializeMenu();
   }
 })(this);
-if(!window.pillarPreloaded) {
-  var ready = function() {
+var ready = function() {
+  if(!window.pillarPreloaded && window.currentPage == "pillar") {
+    console.log("Loading pillar...");
+    window.pillarPreloaded = true;
     PillarUI.$gameContainer = $(".pillar-game");
     if(PillarUI.$gameContainer.attr("class") !== undefined) {
       PillarUI.initializeLoadingView();
@@ -30834,14 +30835,10 @@ if(!window.pillarPreloaded) {
       }
       tryLoad();
     }
-  };
+  }
+};
 
-  $(document).on("page:change", function(){
-    window.pillarPreloaded = true;
-    ready;
-  });
-}
-;
+$(document).on("page:change", ready);
 
 
 

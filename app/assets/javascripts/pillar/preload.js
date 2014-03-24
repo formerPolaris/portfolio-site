@@ -1,5 +1,5 @@
 var ready = function() {
-  if(!window.pillarPreloaded) {
+  if(!window.pillarPreloaded && window.currentPage == "pillar") {
     console.log("Loading pillar...");
     window.pillarPreloaded = true;
     PillarUI.$gameContainer = $(".pillar-game");

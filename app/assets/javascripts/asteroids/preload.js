@@ -1,5 +1,5 @@
 var ready = function() {
-  if(!window.asteroidsPreloaded) {
+  if(!window.asteroidsPreloaded && window.currentPage == "asteroids") {
     console.log("Loading asteroids...");
     window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
