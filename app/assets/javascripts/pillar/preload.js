@@ -1,4 +1,4 @@
-if(!window.pillarPreloaded)
+if(!window.pillarPreloaded) {
   var ready = function() {
     PillarUI.$gameContainer = $(".pillar-game");
     if(PillarUI.$gameContainer.attr("class") !== undefined) {

@@ -27324,7 +27324,6 @@ for(b in e)e.hasOwnProperty(b)&&(c[b]===k?c[b]=e[b]:c[b]!==e[b]&&(c.setupOptions
 G=function(){if(N)return!1;N=!0;Ma();wa();!v&&c.hasHTML5&&c.setup({useHTML5Audio:!0,preferFlash:!1});Wa();!v&&u&&(Ua.push(sa.needFlash),c.setup({flashLoadTimeout:1}));n.removeEventListener&&n.removeEventListener("DOMContentLoaded",G,!1);Z();return!0};Ba=function(){"complete"===n.readyState&&(G(),n.detachEvent("onreadystatechange",Ba));return!0};ua=function(){na=!0;t.remove(g,"load",ua)};ta=function(){if(Fa&&(c.setupOptions.useHTML5Audio=!0,c.setupOptions.preferFlash=!1,ha||Za&&!s.match(/android\s2\.3/i)))ha&&
 (c.ignoreFlash=!0),A=!0};ta();Da();t.add(g,"focus",Y);t.add(g,"load",F);t.add(g,"load",ua);n.addEventListener?n.addEventListener("DOMContentLoaded",G,!1):n.attachEvent?n.attachEvent("onreadystatechange",Ba):H({type:"NO_DOM2_EVENTS",fatal:!0})}var ka=null;if(void 0===g.SM2_DEFER||!SM2_DEFER)ka=new U;g.SoundManager=U;g.soundManager=ka})(window);
 var ready = function() {
-  console.log("I'm running!")
   if(window.isStaticPage) {
     var standardPCWidth = 250;
     var standardPCHeight = 200;
@@ -29351,111 +29350,117 @@ Function.prototype.inherits = function(parent) {
     AsteroidsUI.game.restart();
   };
 })(this);
-var ready = function() {
-  window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-  var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");
-  var s3AmazonBucket = AsteroidsUI.s3AmazonBucket;
+if(!window.asteroidsPreloaded) {
+  var ready = function() {
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");
+    var s3AmazonBucket = AsteroidsUI.s3AmazonBucket;
 
-  $("body").css({
-    "background-color": "black";
-  });
+    $("body").css({
+      "background-color": "black"
+    });
 
-  if ($gameContainer.attr("id") !== undefined) {
-    AsteroidsUI.imagesHash = {
-      // menu view
-      $mainMenuImg: jQuery("<img/>", {
-        class: "main-menu-image",
-        src: s3AmazonBucket + "asteroids-main-menu.png"
-      }),
+    if ($gameContainer.attr("id") !== undefined) {
+      AsteroidsUI.imagesHash = {
+        // menu view
+        $mainMenuImg: jQuery("<img/>", {
+          class: "main-menu-image",
+          src: s3AmazonBucket + "asteroids-main-menu.png"
+        }),
 
-      // about view
-      $aboutImg: jQuery("<img/>",{
-        class: "about-image",
-        src: s3AmazonBucket + "asteroids-about-image.png"
-      }),
+        // about view
+        $aboutImg: jQuery("<img/>",{
+          class: "about-image",
+          src: s3AmazonBucket + "asteroids-about-image.png"
+        }),
 
-      // help view
-      $helpImg: jQuery("<img/>",{
-        class: "help-image",
-        src: s3AmazonBucket + "asteroids-help-image.png"
-      }),
+        // help view
+        $helpImg: jQuery("<img/>",{
+          class: "help-image",
+          src: s3AmazonBucket + "asteroids-help-image.png"
+        }),
 
-      // high scores view
-      $highScoresImg: jQuery("<img/>",{
-        class: "high-scores-image",
-        src: s3AmazonBucket + "asteroids-high-scores.png"
-      }),
+        // high scores view
+        $highScoresImg: jQuery("<img/>",{
+          class: "high-scores-image",
+          src: s3AmazonBucket + "asteroids-high-scores.png"
+        }),
 
-      // enter high score view
-      $highScoresEntryImg: jQuery("<img/>",{
-        class: "high-scores-entry-image",
-        src: s3AmazonBucket + "asteroids-enter-high-score.png"
-      }),
-    };
+        // enter high score view
+        $highScoresEntryImg: jQuery("<img/>",{
+          class: "high-scores-entry-image",
+          src: s3AmazonBucket + "asteroids-enter-high-score.png"
+        }),
+      };
 
-    // "abcdefghijklmnopqrstuvwxyz1234567890 ".split("").forEach(function(character) {
-    //   var url_character = AsteroidsUI.specialCharacterString(character);
-    //   AsteroidsUI.imagesHash["$" + url_character + "Img"] = jQuery("<img/>", {
-    //     src: s3AmazonBucket + "characters/" + url_character + "-image.png"
-    //   });
-    // });
+      // "abcdefghijklmnopqrstuvwxyz1234567890 ".split("").forEach(function(character) {
+      //   var url_character = AsteroidsUI.specialCharacterString(character);
+      //   AsteroidsUI.imagesHash["$" + url_character + "Img"] = jQuery("<img/>", {
+      //     src: s3AmazonBucket + "characters/" + url_character + "-image.png"
+      //   });
+      // });
 
-    // Another artifact from attempting to parse strings to a series of inline images
+      // Another artifact from attempting to parse strings to a series of inline images
 
-    AsteroidsUI.initializeLoadingView();
+      AsteroidsUI.initializeLoadingView();
 
-    if (!createjs.Sound.registerPlugins([createjs.WebAudioPlugin, 
-      createjs.HTMLAudioPlugin])) {
-      return;
-    }
-    var manifest = [
-        {id:"lsaucer", src:"lsaucer.ogg", data: 4, volume:.5},
-        {id:"ssaucer", src:"ssaucer.ogg", data: 4, volume:.5},
-        {id:"explode1", src:"explode1.ogg", data: 4},
-        {id:"explode2", src:"explode2.ogg", data: 4},
-        {id:"explode3", src:"explode3.ogg", data: 4},
-        {id:"life", src:"life.ogg", data: 4},
-        {id:"fire", src:"fire.ogg", data: 4},
-        {id:"sfire", src:"sfire.ogg", data: 4},
-        {id:"thrust", src:"thrust.ogg", data: 99},
-    ];
- 
-    var numSoundsLoaded = 0;
-
-    function handleLoad(event) {
-      numSoundsLoaded += 1;
-    };
-
-    createjs.Sound.alternateExtensions = ["wav"];
-
-    createjs.Sound.addEventListener("fileload", handleLoad);
-    createjs.Sound.registerManifest(manifest, s3AmazonBucket + "sound/");
-     
-    var tryLoad = function() {
-      var imagesLoaded = function() {
-        var loaded = true;
-        $.each(AsteroidsUI.imagesHash, function(index,value) {
-          if(!value.get()[0].complete) {
-            loaded = false;
-            return;
-          }
-        });
-        return loaded;
-      } 
-      if(imagesLoaded() && numSoundsLoaded == 9) {
-        AsteroidsUI.initializeMainMenu();
-      } else {
-        setTimeout(function() {
-          tryLoad();
-        }, 1000);
+      if (!createjs.Sound.registerPlugins([createjs.WebAudioPlugin, 
+        createjs.HTMLAudioPlugin])) {
+        return;
       }
-    }
-    tryLoad();
-  }
-};
+      var manifest = [
+          {id:"lsaucer", src:"lsaucer.ogg", data: 4, volume:.5},
+          {id:"ssaucer", src:"ssaucer.ogg", data: 4, volume:.5},
+          {id:"explode1", src:"explode1.ogg", data: 4},
+          {id:"explode2", src:"explode2.ogg", data: 4},
+          {id:"explode3", src:"explode3.ogg", data: 4},
+          {id:"life", src:"life.ogg", data: 4},
+          {id:"fire", src:"fire.ogg", data: 4},
+          {id:"sfire", src:"sfire.ogg", data: 4},
+          {id:"thrust", src:"thrust.ogg", data: 99},
+      ];
+   
+      var numSoundsLoaded = 0;
 
-$(document).on("page:change", ready);
+      function handleLoad(event) {
+        numSoundsLoaded += 1;
+      };
+
+      createjs.Sound.alternateExtensions = ["wav"];
+
+      createjs.Sound.addEventListener("fileload", handleLoad);
+      createjs.Sound.registerManifest(manifest, s3AmazonBucket + "sound/");
+       
+      var tryLoad = function() {
+        var imagesLoaded = function() {
+          var loaded = true;
+          $.each(AsteroidsUI.imagesHash, function(index,value) {
+            if(!value.get()[0].complete) {
+              loaded = false;
+              return;
+            }
+          });
+          return loaded;
+        } 
+        if(imagesLoaded() && numSoundsLoaded == 9) {
+          AsteroidsUI.initializeMainMenu();
+        } else {
+          setTimeout(function() {
+            tryLoad();
+          }, 1000);
+        }
+      }
+      tryLoad();
+    }
+  };
+
+  $(document).on("page:change", function(){
+    window.asteroidsPreloaded = true;
+    ready;
+  });
+}
+;
 
 
 
@@ -30647,190 +30652,196 @@ $(document).on("page:change", ready);
     PillarUI.initializeMenu();
   }
 })(this);
-var ready = function() {
-  PillarUI.$gameContainer = $(".pillar-game");
-  if(PillarUI.$gameContainer.attr("class") !== undefined) {
-    PillarUI.initializeLoadingView();
-    
-    PillarUI.imagesHash = {
-      // menu view
-      $mainMenuImg: jQuery("<img/>", {
-        class: "main-menu-image",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-main-menu.png"
-      }),
-      $apostropheImg: jQuery("<img/>", {
-        class: "apostrophe-img pillar-logo-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/apostrophe.png"
-      }),
-      $pImg: jQuery("<img/>", {
-        class: "p-img pillar-logo-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/p.png"
-      }),
-      $iImg: jQuery("<img/>", {
-        class: "i-img pillar-logo-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/i.png"
-      }),
-      $l1Img: jQuery("<img/>", {
-        class: "l1-img pillar-logo-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/l1.png"
-      }),
-      $l2Img: jQuery("<img/>", {
-        class: "l2-img pillar-logo-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/l2.png"
-      }),
-      $aImg: jQuery("<img/>", {
-        class: "a-img pillar-logo-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/a.png"
-      }),
-      $rImg: jQuery("<img/>", {
-        class: "r-img pillar-logo-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/r.png"
-      }),
-      //appleImg used twice to cache both states
-      $appleImg: jQuery("<img/>", {
-        class: "apple-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo-apple-eaten.png"
-      }),
-      $appleImg: jQuery("<img/>", {
-        class: "apple-img",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo-apple-whole.png"
-      }),
-      $leftLeafImg: jQuery("<img/>", {
-        class: "left",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/moddedleaf.png"
-      }),
-      $rightLeafImg: jQuery("<img/>", {
-        class: "right",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/moddedleaf.png"
-      }),
+if(!window.pillarPreloaded) {
+  var ready = function() {
+    PillarUI.$gameContainer = $(".pillar-game");
+    if(PillarUI.$gameContainer.attr("class") !== undefined) {
+      PillarUI.initializeLoadingView();
+      
+      PillarUI.imagesHash = {
+        // menu view
+        $mainMenuImg: jQuery("<img/>", {
+          class: "main-menu-image",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-main-menu.png"
+        }),
+        $apostropheImg: jQuery("<img/>", {
+          class: "apostrophe-img pillar-logo-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/apostrophe.png"
+        }),
+        $pImg: jQuery("<img/>", {
+          class: "p-img pillar-logo-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/p.png"
+        }),
+        $iImg: jQuery("<img/>", {
+          class: "i-img pillar-logo-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/i.png"
+        }),
+        $l1Img: jQuery("<img/>", {
+          class: "l1-img pillar-logo-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/l1.png"
+        }),
+        $l2Img: jQuery("<img/>", {
+          class: "l2-img pillar-logo-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/l2.png"
+        }),
+        $aImg: jQuery("<img/>", {
+          class: "a-img pillar-logo-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/a.png"
+        }),
+        $rImg: jQuery("<img/>", {
+          class: "r-img pillar-logo-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo/r.png"
+        }),
+        //appleImg used twice to cache both states
+        $appleImg: jQuery("<img/>", {
+          class: "apple-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo-apple-eaten.png"
+        }),
+        $appleImg: jQuery("<img/>", {
+          class: "apple-img",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/logo-apple-whole.png"
+        }),
+        $leftLeafImg: jQuery("<img/>", {
+          class: "left",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/moddedleaf.png"
+        }),
+        $rightLeafImg: jQuery("<img/>", {
+          class: "right",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/moddedleaf.png"
+        }),
 
-      // options view
-      $optionsMenuImg: jQuery("<img/>",{
-        class: "options-menu-image",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-options-menu.png"
-      }),
-      $difficultyImg: jQuery("<img/>",{
-        class: "options-menu-difficulties",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/difficulties.png"
-      }),
+        // options view
+        $optionsMenuImg: jQuery("<img/>",{
+          class: "options-menu-image",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-options-menu.png"
+        }),
+        $difficultyImg: jQuery("<img/>",{
+          class: "options-menu-difficulties",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/difficulties.png"
+        }),
 
-      // about view
-      $aboutImg: jQuery("<img/>",{
-        class: "about-image",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-about.png"
-      }),
+        // about view
+        $aboutImg: jQuery("<img/>",{
+          class: "about-image",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-about.png"
+        }),
 
-      // help view
-      $helpImg: jQuery("<img/>",{
-        class: "help-image",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-help.png"
-      }),
+        // help view
+        $helpImg: jQuery("<img/>",{
+          class: "help-image",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/pillar-help.png"
+        }),
 
-      // cache game background/foreground
-      $background: jQuery("<img/>",{
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/leaflitter.png"
-      }),
-      $foreground: jQuery("<img/>",{
-        class: "pillar-game-foreground",
-        src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/game-foreground.png"
-      })
-    };
+        // cache game background/foreground
+        $background: jQuery("<img/>",{
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/leaflitter.png"
+        }),
+        $foreground: jQuery("<img/>",{
+          class: "pillar-game-foreground",
+          src: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/game-foreground.png"
+        })
+      };
 
-    PillarUI.soundsArray = new Array;
-    soundManager.setup({
-      url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/soundmanager2.swf",
-      flashVersion: 8,
-      onready: function() {
-        soundManager.createSound({
-          id: "bgm",
-          url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/ambience.mp3",
-          autoLoad: true,
-          autoPlay: false,
-          stream: false,
-          onload: function() {
-            this.numberPlays = 0;
-            PillarUI.soundsArray.push(this);
-          },
-          onplay: function() {
-            this.numberPlays += 1;
-            var that = this;
-            soundManager.onPosition("bgm", 60574, function() {
-              if (that.numberPlays < 2) {
-                soundManager.play("bgm");
-              }
-            });
-          },
-          onfinish: function() {
-            this.numberPlays -= 1;
-          },
-          onstop: function() {
-            this.numberPlays -= 1;
-          },
-          volume: 100
-        });
+      PillarUI.soundsArray = new Array;
+      soundManager.setup({
+        url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/soundmanager2.swf",
+        flashVersion: 8,
+        onready: function() {
+          soundManager.createSound({
+            id: "bgm",
+            url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/ambience.mp3",
+            autoLoad: true,
+            autoPlay: false,
+            stream: false,
+            onload: function() {
+              this.numberPlays = 0;
+              PillarUI.soundsArray.push(this);
+            },
+            onplay: function() {
+              this.numberPlays += 1;
+              var that = this;
+              soundManager.onPosition("bgm", 60574, function() {
+                if (that.numberPlays < 2) {
+                  soundManager.play("bgm");
+                }
+              });
+            },
+            onfinish: function() {
+              this.numberPlays -= 1;
+            },
+            onstop: function() {
+              this.numberPlays -= 1;
+            },
+            volume: 100
+          });
 
-        soundManager.createSound({
-          id: "applebite1",
-          url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/applebite1.mp3",
-          autoLoad: true,
-          autoPlay: false,
-          stream: false,
-          onload: function() {
-            PillarUI.soundsArray.push(this);
-          },
-          volume: 100
-        });
+          soundManager.createSound({
+            id: "applebite1",
+            url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/applebite1.mp3",
+            autoLoad: true,
+            autoPlay: false,
+            stream: false,
+            onload: function() {
+              PillarUI.soundsArray.push(this);
+            },
+            volume: 100
+          });
 
-        soundManager.createSound({
-          id: "applebite2",
-          url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/applebite2.mp3",
-          autoLoad: true,
-          autoPlay: false,
-          stream: false,
-          onload: function() {
-            PillarUI.soundsArray.push(this);
-          },
-          volume: 100
-        });
+          soundManager.createSound({
+            id: "applebite2",
+            url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/applebite2.mp3",
+            autoLoad: true,
+            autoPlay: false,
+            stream: false,
+            onload: function() {
+              PillarUI.soundsArray.push(this);
+            },
+            volume: 100
+          });
 
-        soundManager.createSound({
-          id: "applebite3",
-          url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/applebite3.mp3",
-          autoLoad: true,
-          autoPlay: false,
-          stream: false,
-          onload: function() {
-            PillarUI.soundsArray.push(this);
-          },
-          volume: 100
-        });
+          soundManager.createSound({
+            id: "applebite3",
+            url: "https://s3-us-west-1.amazonaws.com/polaris-pillar-main/applebite3.mp3",
+            autoLoad: true,
+            autoPlay: false,
+            stream: false,
+            onload: function() {
+              PillarUI.soundsArray.push(this);
+            },
+            volume: 100
+          });
+        }
+      });
+
+      var tryLoad = function() {
+        var imagesLoaded = function() {
+          var loaded = true;
+          $.each(PillarUI.imagesHash, function(index,value) {
+            if(!value.get()[0].complete) {
+              loaded = false;
+              return;
+            }
+          });
+          return loaded;
+        } 
+        if(imagesLoaded() && PillarUI.soundsArray.length == 4) {
+          PillarUI.initializeMenu();
+        } else {
+          setTimeout(function() {
+            tryLoad();
+          }, 1000);
+        }
       }
-    });
-
-    var tryLoad = function() {
-      var imagesLoaded = function() {
-        var loaded = true;
-        $.each(PillarUI.imagesHash, function(index,value) {
-          if(!value.get()[0].complete) {
-            loaded = false;
-            return;
-          }
-        });
-        return loaded;
-      } 
-      if(imagesLoaded() && PillarUI.soundsArray.length == 4) {
-        PillarUI.initializeMenu();
-      } else {
-        setTimeout(function() {
-          tryLoad();
-        }, 1000);
-      }
+      tryLoad();
     }
-    tryLoad();
-  }
-};
+  };
 
-$(document).on("page:change", ready);
+  $(document).on("page:change", function(){
+    window.pillarPreloaded = true;
+    ready;
+  });
+}
+;
 
 
 
