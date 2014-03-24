@@ -1,8 +1,12 @@
-$(document).ready(function() {
+var ready = function() {
   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
   var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");
   var s3AmazonBucket = AsteroidsUI.s3AmazonBucket;
+
+  $("body").css({
+    "background-color": "black";
+  });
 
   if ($gameContainer.attr("id") !== undefined) {
     AsteroidsUI.imagesHash = {
@@ -96,4 +100,6 @@ $(document).ready(function() {
     }
     tryLoad();
   }
-});
+};
+
+$(document).on("page:change", ready);

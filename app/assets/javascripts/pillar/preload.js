@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var ready = function() {
   PillarUI.$gameContainer = $(".pillar-game");
   if(PillarUI.$gameContainer.attr("class") !== undefined) {
     PillarUI.initializeLoadingView();
@@ -179,4 +179,6 @@ $(document).ready(function() {
     }
     tryLoad();
   }
-});
+};
+
+$(document).on("page:change", ready);
