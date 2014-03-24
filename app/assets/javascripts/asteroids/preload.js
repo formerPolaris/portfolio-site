@@ -5,7 +5,7 @@ var ready = function() {
   var s3AmazonBucket = AsteroidsUI.s3AmazonBucket;
 
   $("body").css({
-    "background-color": "black";
+    "background-color": "black"
   });
 
   if ($gameContainer.attr("id") !== undefined) {
