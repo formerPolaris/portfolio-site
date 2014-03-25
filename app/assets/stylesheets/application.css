@@ -12,3 +12,9 @@
  *= require jquery.ui.all
  *= require_tree .
  */
+
+.home-back-link {
+  color: white;
+  font-size: 18pt;
+  text-align: center;
+}
