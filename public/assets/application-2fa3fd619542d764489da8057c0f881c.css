@@ -12,6 +12,13 @@
 
 
  */
+
+
+.home-back-link {
+  color: white;
+  font-size: 18pt;
+  text-align: center;
+}
 /*!
  * jQuery UI CSS Framework 1.10.3
  * http://jqueryui.com
@@ -1714,7 +1721,7 @@ body .ui-tooltip {
   width: .2%;
 }
 div#polaris-animation {
-  border:2px solid lightgrey;
+  border:2px solid white;
   display: table-cell;
   vertical-align: middle;
 }
@@ -1793,12 +1800,13 @@ div#polaris-animation {
 #home-projects .project-container {
   text-align: center;
   color: white;
-  border: 2px solid lightgrey;
+  border: 2px solid white;
   opacity: 0;
   float: left;
   width: 250px;
   height: 200px;
   margin: 20px;
+  overflow: hidden;
 }
 
 #home-menu a {
@@ -2240,4 +2248,10 @@ div#polaris-animation {
   width: 41.5%;
   bottom: 17%;
   left: 29.5%;
+}
+#about-polaris {
+  color: white;
+  font-size: 18pt;
+  width: 75%;
+  margin: auto;
 }
