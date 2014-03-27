@@ -4,7 +4,11 @@ var ready = function() {
     var standardPCWidth = 250;
     var standardPCHeight = 200;
     $("body").css({
-      "background-image": "https://s3-us-west-1.amazonaws.com/polaris-common/portfolio-images/background.jpg",
+      "background-color": "black",
+      "background": "https://s3-us-west-1.amazonaws.com/polaris-common/portfolio-images/background.jpg no-repeat center center fixed",
+      "-webkit-background-size": "cover",
+      "-moz-background-size": "cover",
+      "-o-background-size": "cover",
       "background-size": "cover"
     });
 

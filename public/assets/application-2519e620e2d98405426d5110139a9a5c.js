@@ -27329,7 +27329,12 @@ var ready = function() {
     var standardPCWidth = 250;
     var standardPCHeight = 200;
     $("body").css({
-      "background-color": "black"
+      "background-color": "black",
+      "background": "https://s3-us-west-1.amazonaws.com/polaris-common/portfolio-images/background.jpg no-repeat center center fixed",
+      "-webkit-background-size": "cover",
+      "-moz-background-size": "cover",
+      "-o-background-size": "cover",
+      "background-size": "cover"
     });
 
     $("#polaris-animation").css({
@@ -29352,9 +29357,8 @@ Function.prototype.inherits = function(parent) {
   };
 })(this);
 var ready = function() {
-  if(!window.asteroidsPreloaded && window.game == "asteroids") {
+  if(window.game == "asteroids") {
     console.log("Loading asteroids...");
-    window.asteroidsPreloaded = true;
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     var $gameContainer = AsteroidsUI.$gameContainer = $("#asteroids-game");
@@ -30652,9 +30656,8 @@ $(document).on("page:change", ready);
   }
 })(this);
 var ready = function() {
-  if(!window.pillarPreloaded && window.game == "pillar") {
+  if(window.game == "pillar") {
     console.log("Loading pillar...");
-    window.pillarPreloaded = true;
     PillarUI.$gameContainer = $(".pillar-game");
     if(PillarUI.$gameContainer.attr("class") !== undefined) {
       PillarUI.initializeLoadingView();
