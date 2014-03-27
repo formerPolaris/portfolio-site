@@ -13,12 +13,14 @@
  *= require_tree .
  */
 
-.home-back-link a {
+.home-back-link {
   text-align: center;
   color: white;
   font-size: 18pt;
-  width: 75%;
-  margin: auto;
   color: white;
   text-decoration: none;
+}
+
+.home-back-link a:hover {
+  text-decoration: underline;
 }

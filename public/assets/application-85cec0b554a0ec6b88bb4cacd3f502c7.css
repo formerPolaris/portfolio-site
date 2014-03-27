@@ -15,9 +15,15 @@
 
 
 .home-back-link {
+  text-align: center;
   color: white;
   font-size: 18pt;
-  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.home-back-link a:hover {
+  text-decoration: underline;
 }
 /*!
  * jQuery UI CSS Framework 1.10.3
@@ -2252,6 +2258,4 @@ div#polaris-animation {
 #about-polaris {
   color: white;
   font-size: 18pt;
-  width: 75%;
-  margin: auto;
 }
