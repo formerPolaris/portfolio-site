@@ -14,10 +14,13 @@
  */
 
 
-.home-back-link {
+.home-back-link a {
   color: white;
   font-size: 18pt;
-  text-align: center;
+  width: 75%;
+  margin: auto;
+  color: white;
+  text-decoration: none;
 }
 /*!
  * jQuery UI CSS Framework 1.10.3

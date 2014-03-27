@@ -1,12 +1,4 @@
-#about-polaris a {
+#about-polaris {
   color: white;
   font-size: 18pt;
-  width: 75%;
-  margin: auto;
-  color: white;
-  text-decoration: none;
-}
-
-#about-polaris a:hover {
-  text-decoration: underline;
 }

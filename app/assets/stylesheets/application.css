@@ -13,8 +13,11 @@
  *= require_tree .
  */
 
-.home-back-link {
+.home-back-link a {
   color: white;
   font-size: 18pt;
-  text-align: center;
+  width: 75%;
+  margin: auto;
+  color: white;
+  text-decoration: none;
 }
