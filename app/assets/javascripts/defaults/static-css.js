@@ -2,14 +2,13 @@ var ready = function() {
   if(window.isStaticPage) {
     var standardPCWidth = 250;
     var standardPCHeight = 200;
-    console.log("Eat at joe's");
     $("body").css({
-      "background-color": "black",
       "background": "url(https://s3-us-west-1.amazonaws.com/polaris-common/portfolio-images/background.jpg) no-repeat center center fixed",
       "-webkit-background-size": "cover",
          "-moz-background-size": "cover",
            "-o-background-size": "cover",
               "background-size": "cover",
+      "background-color": "black"
     });
 
     $("#polaris-animation").css({
