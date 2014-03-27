@@ -27325,12 +27325,16 @@ G=function(){if(N)return!1;N=!0;Ma();wa();!v&&c.hasHTML5&&c.setup({useHTML5Audio
 (c.ignoreFlash=!0),A=!0};ta();Da();t.add(g,"focus",Y);t.add(g,"load",F);t.add(g,"load",ua);n.addEventListener?n.addEventListener("DOMContentLoaded",G,!1):n.attachEvent?n.attachEvent("onreadystatechange",Ba):H({type:"NO_DOM2_EVENTS",fatal:!0})}var ka=null;if(void 0===g.SM2_DEFER||!SM2_DEFER)ka=new U;g.SoundManager=U;g.soundManager=ka})(window);
 var ready = function() {
   if(window.isStaticPage) {
-    console.log("Loading static js-to-css...")
     var standardPCWidth = 250;
     var standardPCHeight = 200;
+    console.log("Eat at joe's");
     $("body").css({
-      "background-image": "https://s3-us-west-1.amazonaws.com/polaris-common/portfolio-images/background.jpg",
-      "background-size": "cover"
+      "background-color": "black",
+      "background": "url(https://s3-us-west-1.amazonaws.com/polaris-common/portfolio-images/background.jpg) no-repeat center center fixed",
+      "-webkit-background-size": "cover",
+         "-moz-background-size": "cover",
+           "-o-background-size": "cover",
+              "background-size": "cover",
     });
 
     $("#polaris-animation").css({
