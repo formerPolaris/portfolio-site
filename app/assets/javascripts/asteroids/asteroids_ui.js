@@ -584,7 +584,9 @@
             "game_id": 2,
             "player": "",
             "value": score,
-            "level": level
+            "level": level,
+            "lives": lives,
+            "elapsed": elapsed
           }
         };
       };

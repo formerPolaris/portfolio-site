@@ -4,6 +4,7 @@ class ScoresController < ApplicationController
 
   def create
     @score = Score.new(params[:score])
+    p "blahblah"
     if @score.save
       render :json => @score, :status => 201
     else

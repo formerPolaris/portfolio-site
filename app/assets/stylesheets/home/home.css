@@ -78,13 +78,16 @@ div#polaris-animation {
 #home-projects .project-container {
   text-align: center;
   color: white;
-  border: 2px solid white;
   opacity: 0;
   float: left;
   width: 250px;
   height: 200px;
   margin: 20px;
   overflow: hidden;
+  -webkit-box-shadow: inset 0 0 10px white;
+     -moz-box-shadow: inset 0 0 10px white;
+       -o-box-shadow: inset 0 0 10px white;
+          box-shadow: inset 0 0 10px white;
 }
 
 #home-menu a {
